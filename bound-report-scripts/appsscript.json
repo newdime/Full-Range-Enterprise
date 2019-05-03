@@ -1,0 +1,35 @@
+{
+  "timeZone": "Australia/Sydney",
+  "dependencies": {
+    "enabledAdvancedServices": [{
+      "userSymbol": "Drive",
+      "serviceId": "drive",
+      "version": "v2"
+    }],
+    "libraries": [{
+      "userSymbol": "v2staffCreatedScheduleAutoRun",
+      "libraryId": "1sAIENdDMCo8bD1MJkud-J0EP6XH9Uslk4GJEAtrDMoXAB_US6sfSwjtN",
+      "version": "1",
+      "developmentMode": true
+    }, {
+      "userSymbol": "staffReportsSA",
+      "libraryId": "1To9KGiFsBMScAyJBJHDvSI6QvcvY0PndlzQKn5lEiq8d1lAC0UxImheh",
+      "version": "1",
+      "developmentMode": true
+    }, {
+      "userSymbol": "staffCSAR",
+      "libraryId": "1g_Ef-B8-l2u4mRYICuVRoVQP7ZIckgnSEQ7bicVjxPxd64aGbqqUsV_v",
+      "version": "1",
+      "developmentMode": true
+    }]
+  },
+  "webapp": {
+    "access": "ANYONE_ANONYMOUS",
+    "executeAs": "USER_DEPLOYING"
+  },
+  "exceptionLogging": "STACKDRIVER",
+  "oauthScopes": ["https://www.googleapis.com/auth/drive", "https://www.googleapis.com/auth/script.scriptapp", "https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/script.external_request", "https://www.googleapis.com/auth/script.container.ui"],
+  "executionApi": {
+    "access": "DOMAIN"
+  }
+}
