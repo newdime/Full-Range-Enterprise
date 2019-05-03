@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+  <div style = "margin-bottom: 10px;">
+  <div class = "snap">
+   Capture snapshot? 
+  </div> 
+   <div class = "b1">
+   <input type="button" value="capture" onclick="google.script.run.snapShot()" />
+    <input type="button" value="close" onclick="google.script.host.close()" />
+  </div>
+  </div>
+  
+  <div style = "margin-bottom: 10px;">
+  <div class = "week">
+   Push week? 
+ </div>
+<div class = "b2">
+   <input type="button" value="push" onclick="google.script.run.pushWeek()" />
+    <input type="button" value="close" onclick="google.script.host.close()" />
+  </div>
+  </div>
+  
+   <div>
+  <div class = "connect">
+   Reconnect database? 
+ </div>
+<div class = "b3">
+   <input type="button" value="connect" onclick="google.script.run.connectDataBase()" />
+    <input type="button" value="close" onclick="google.script.host.close()" />
+  </div>
+  </div>
+ 
+ <style>
+  div.b1 {
+   
+    display: inline-block;
+    float: right;
+}
+div.b2 {
+   
+    display: inline-block;
+    float: right;
+}
+div.b3 {
+   
+    display: inline-block;
+    float: right;
+}
+
+  div.snap {
+   
+    display: inline-block;
+}
+div.week {
+display: inline-block;
+  
+    
+}
+div.connect {
+display: inline-block;
+  
+    
+}
+</style>
+  </body>
+</html>
+
+
