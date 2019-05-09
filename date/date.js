@@ -29,6 +29,21 @@ function date(token, returnData) {
     date.setDate(date.getDate()-(week*2));
   }
 
+  // set start week to the second month (for schedule)
+  if (token == 3)
+  {
+    var n = 2;
+    var schedArr = [];
+    for (var i = 0; i < 9; i++)
+    {
+      date.setDate(date.getDate() + (week * n) - difference);
+      schedArr[i] = Utilities.formatDate(date, "GMT+11", "dd/MM/yy");
+      n = n + 1;
+      Logger.log(n);
+    }
+    Logger.log(schedArr);
+  }
+
   // create the document name
   date.setDate(date.getDate()-difference);
   var startDate = Utilities.formatDate(date, "GMT+11", "dd/MM/yy");
