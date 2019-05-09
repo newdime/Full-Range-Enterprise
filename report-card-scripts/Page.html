@@ -4,9 +4,14 @@
     <base target="_top">
 
       <script>
-        function sendFetch(){
-        // var staff = "James";
+        function sendPush()
+        {
         google.script.run.snapShot();
+        }
+        
+        function sendFetch()
+        {
+        google.script.run.fetch();
         }
       </script>
 
@@ -28,7 +33,7 @@
    Submit Report?
 </div>
  <div class = "b2">
-<input type="button" value="submit" onclick="sendFetch()" />
+<input type="button" value="submit" onclick="sendPush()" />
     <input type="button" value="close" onclick="google.script.host.close()" />
 </div> 
  </div> 
