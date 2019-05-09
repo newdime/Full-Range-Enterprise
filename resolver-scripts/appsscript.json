@@ -1,0 +1,21 @@
+{
+  "timeZone": "Australia/Sydney",
+  "dependencies": {
+    "enabledAdvancedServices": [{
+      "userSymbol": "Drive",
+      "serviceId": "drive",
+      "version": "v2"
+    }],
+    "libraries": [{
+      "userSymbol": "Resolver",
+      "libraryId": "1ptfMcTjU_ydi9Nbuw3r0bXs1f4Fdohjyvo38yq8Jyv3b8SU4PMk5hH_9",
+      "version": "1",
+      "developmentMode": true
+    }]
+  },
+  "webapp": {
+    "access": "ANYONE_ANONYMOUS",
+    "executeAs": "USER_DEPLOYING"
+  },
+  "exceptionLogging": "STACKDRIVER"
+}
