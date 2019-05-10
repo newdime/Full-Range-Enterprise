@@ -1,67 +1,72 @@
-function toDatabase() {
+function snapShot(staff)
+{
+  var staff = staff;
+  var domain = staff + '@fullrange.com.au';
+  Logger.log(domain);
   
-  //get properties
-  var properties = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1AoNzKIAqaCTpBcsSUIuWypNp-53l29-n12ncQLMRYEM/edit?usp=sharing')
-  var DaysPW= properties.getRange('H2').getValue();
-  var JobsPD = properties.getRange('I2').getValue();
-  var staff = properties.getRange('O2').getValue();
-  var totalWeeksScheduled = properties.getRange('M2').getValue();
-  Logger.log('DaysPW: ' + DaysPW);
-  Logger.log('JobsPD: ' + JobsPD);
-  Logger.log('staff total: ' + staff);
+  // get the staff range of the sheet being captured
+  var ss = SpreadsheetApp.getActive().getRangeByName(staff);
+  var sheetName = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getName();
   
-  // calculate total jobs per week (per sheet)
-  var totalJobsPC = staff*JobsPD*DaysPW*totalWeeksScheduled;
-  Logger.log('total jobs per cycle: ' + totalJobsPC);
+  // day name ranges
+  var days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
   
-  // get the database file and open it
-  var dataBase = SpreadsheetApp.openById('1anImLqZlqZY1FkSZJpJav_tiA7VzyncN99w9D3RWe8Q');
-  var dataSheets = dataBase.getSheets();
-  var dataBaseName = 'schedule';
+  // get the data base file
+  var databaseFolder = '1SVYaRTIsECLnpppT4QLAb2026wduL62C';
+  var database = DriveApp.getFolderById(databaseFolder).getFiles();
   
-  // get the id of the current schedule doc.. get the sheets
-  var sourceDoc = SpreadsheetApp.getActive().getId();
-  var sourceSheets = SpreadsheetApp.openById(sourceDoc).getSheets();
-  
-  // set the total range of jobs on all sheets to this file id 
-  // if there is already data from a previous schedule assigned to the first range go to range two
-  var dataIDset = dataBase.getSheetByName(dataBaseName).getRange(2, 1);
-  var vals = dataIDset.getValues();
-  
-  if (vals[0][0] != "")
+  // go through files in database
+  while(database.hasNext())
   {
-    dataIDset = dataBase.getSheetByName(dataBaseName).getRange(3, 1);
-    vals = dataIDset.getValues();
-  }
-  Logger.log(vals);
-  dataIDset.setValue(sourceDoc); 
-  
-  // The schedule sheet names * the total number of jobs on each sheet
-  var sheetName = new Array ([]);
-  sourceSheets.forEach(function (sheet, index){
-    if (sheet.getName() == 'properties')
+    var file = database.next();
+    Logger.log(file.getName());
+    Logger.log(sheetName);
+    if (file.getName() == sheetName)
     {
-      index + 1;
+      var dataEntry = SpreadsheetApp.openById(file.getId()).getSheets();
+      for (var s in dataEntry)
+      {
+        if(dataEntry[s].getName() == domain)
+        {
+          var index = s;
+          Logger.log('s = ' + index);
+          break;
+        }
+      }
+      Logger.log(file.getName());
+      break;
     }
-    else
+  }
+  
+  // go through all days in the captured sheet
+  for (var d in days)
+  {
+    // get the range and values
+    var day = SpreadsheetApp.getActive().getRangeByName(days[d]);
+    var dayVals = day.getValues();
+    
+    var rows =  Math.abs(ss.getNumRows() -  day.getNumRows());
+    var cols =  Math.abs(ss.getNumColumns() - day.getNumColumns());
+    
+    // get the appropriate row and column indexes
+    var rowDex = ss.getRowIndex();
+    var colDex = day.getColumn();
+    
+    // create the subset range to be captured
+    var subset = SpreadsheetApp.getActiveSheet().getRange(rowDex, colDex, ss.getNumRows(), day.getNumColumns()).getValues();
+    
+    Logger.log(subset);
+    Logger.log("column " + colDex);
+    Logger.log(rowDex);
+    Logger.log(rows);
+    Logger.log(cols);
+    Logger.log(ss.getNumRows());
+    Logger.log(ss.getNumColumns());
+    
+    if (d != 0)
     {
-      sheetName[0][index] = sheet.getSheetName(); 
-      index+1;
+      dataEntry[index].insertRowsBefore(1, ss.getNumRows());
     }
-  });
-  
-  if(dataBase.getSheetByName(dataBaseName).getRange(2, 1).getValue()  != sourceDoc)
-  {
-    var dayRange = dataBase.getSheetByName(dataBaseName).getRange(3, 2, 1,sheetName[0].length);
-    Logger.log(dayRange.getValues());
-    dayRange.setValues(sheetName);
+    dataEntry[index].getRange(1, 1, ss.getNumRows(), day.getNumColumns()).setValues(subset);
   }
-  else
-  {
-    var dayRange = dataBase.getSheetByName(dataBaseName).getRange(2, 2, 1,sheetName[0].length);
-    Logger.log(dayRange.getValues());
-    dayRange.setValues(sheetName);
-  }
-  
 }
-

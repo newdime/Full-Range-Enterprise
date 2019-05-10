@@ -1,4 +1,4 @@
-function initialise() {
+/*function initialise() {
   toDatabase();
   
-}
+}*/

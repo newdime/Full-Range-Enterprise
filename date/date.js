@@ -29,19 +29,34 @@ function date(token, returnData) {
     date.setDate(date.getDate()-(week*2));
   }
 
-  // set start week to the second month (for schedule)
+  // get all the dates and put them in two arrays (for schedule)
   if (token == 3)
   {
-    var n = 2;
     var schedArr = [];
-    for (var i = 0; i < 9; i++)
+    var endArr = [];
+    var combine = [];
+    date.setDate(date.getDate() - difference);
+    schedArr[0] = Utilities.formatDate(date, "GMT+11", "dd/MM/yy");
+
+    var firstEnd = new Date();
+    firstEnd.setDate(firstEnd.getDate() + (week - difference - 1));
+    endArr[0] =  Utilities.formatDate(firstEnd, "GMT+11", "dd/MM/yy");
+    Logger.log("end arr = " + endArr);
+
+    combine[0] = schedArr[0] + " - " + endArr[0];
+
+    for (var i = 1; i < 8; i++)
     {
-      date.setDate(date.getDate() + (week * n) - difference);
+      date.setDate(date.getDate() + (week));
       schedArr[i] = Utilities.formatDate(date, "GMT+11", "dd/MM/yy");
-      n = n + 1;
-      Logger.log(n);
+      firstEnd.setDate(firstEnd.getDate() + (week));
+      endArr[i] =  Utilities.formatDate(firstEnd, "GMT+11", "dd/MM/yy");
+      combine[i] = schedArr[i] + " - " + endArr[i];
     }
     Logger.log(schedArr);
+    Logger.log(endArr);
+    Logger.log(combine);
+    return combine;
   }
 
   // create the document name
@@ -51,6 +66,7 @@ function date(token, returnData) {
   var endDate = Utilities.formatDate(date, "GMT+11", "dd/MM/yy");
   date.setDate(date.getDate()-(week-1));
   var reportName = (startDate + " - " + endDate);
+  Logger.log("report name = " + reportName);
 
   // return the doc name
   if (returnData == 0)

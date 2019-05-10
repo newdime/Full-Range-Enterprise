@@ -13,7 +13,7 @@ function showSidebar() {
   .showSidebar(html);
 }
 
-function snapShot(staff){
+/*function snapShot(staff){
   
   // get id of the matching range
   var staff = staff;
@@ -113,4 +113,4 @@ function snapShot(staff){
   }
   
   
-}
+}*/

@@ -1,4 +1,4 @@
-/*function yytoDatabase() {
+/*function toDatabase() {
   
   //get properties
   var properties = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1AoNzKIAqaCTpBcsSUIuWypNp-53l29-n12ncQLMRYEM/edit?usp=sharing')
@@ -25,64 +25,43 @@
   
   // set the total range of jobs on all sheets to this file id 
   // if there is already data from a previous schedule assigned to the first range go to range two
-  var dataIDset = dataBase.getSheetByName(dataBaseName).getRange(2, 1, totalJobsPC);
+  var dataIDset = dataBase.getSheetByName(dataBaseName).getRange(2, 1);
   var vals = dataIDset.getValues();
   
   if (vals[0][0] != "")
   {
-    dataIDset = dataBase.getSheetByName(dataBaseName).getRange((totalJobsPC+2), 1, totalJobsPC);
+    dataIDset = dataBase.getSheetByName(dataBaseName).getRange(3, 1);
     vals = dataIDset.getValues();
   }
-  
-  vals.forEach(function (val, index) {val[0] = sourceDoc;});
-  dataIDset.setValues(vals); 
-  var vallength = vals.length;
-  Logger.log('vallength: ' + vallength);
- 
+  Logger.log(vals);
+  dataIDset.setValue(sourceDoc); 
   
   // The schedule sheet names * the total number of jobs on each sheet
-  var sheetName = new Array ();
-  var jobs = vallength/totalWeeksScheduled;
-  var jobit = jobs;
-  var t = 0;
-  
-  // put the sheet names in an array
-  sourceSheets.forEach(function (sheet, index){sheetName[index] = sheet.getSheetName(); 
-                                             index+1;});
-  
-  var dayRange = dataBase.getSheetByName(dataBaseName).getRange(2, 2, vallength);
-  var dayVals = dayRange.getValues();
-  
-  var i = 0;
-  Logger.log(vals[0][0]);
-  
-  if(dataBase.getSheetByName(dataBaseName).getRange(2, 1).getValue()  != sourceDoc)
-  {
-    var dayRange = dataBase.getSheetByName(dataBaseName).getRange(vallength+2, 2, vallength);
-    var dayVals = dayRange.getValues();
-    i = vallength;
-    jobit = i + jobs;
-    vallength = vallength*2;
-  }
-  
-  Logger.log(dayVals);
-  var n = 0;
-  for (i; i < vallength; i++)
-  {
-    if (i < jobit)
+  var sheetName = new Array ([]);
+  sourceSheets.forEach(function (sheet, index){
+    if (sheet.getName() == 'properties')
     {
-      dayVals[n][0] = sheetName[t]; 
-      n++
+      index + 1;
     }
     else
     {
-      jobit = jobit + jobs;
-      i = i - 1;
-      t++
+      sheetName[0][index] = sheet.getSheetName(); 
+      index+1;
     }
+  });
+  
+  if(dataBase.getSheetByName(dataBaseName).getRange(2, 1).getValue()  != sourceDoc)
+  {
+    var dayRange = dataBase.getSheetByName(dataBaseName).getRange(3, 2, 1,sheetName[0].length);
+    Logger.log(dayRange.getValues());
+    dayRange.setValues(sheetName);
+  }
+  else
+  {
+    var dayRange = dataBase.getSheetByName(dataBaseName).getRange(2, 2, 1,sheetName[0].length);
+    Logger.log(dayRange.getValues());
+    dayRange.setValues(sheetName);
   }
   
-  dayRange.setValues(dayVals);
-}
+}*/
 
-*/
