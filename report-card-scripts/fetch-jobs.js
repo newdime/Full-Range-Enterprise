@@ -3,8 +3,9 @@ function fetch() {
   // get the folder of staff folders
   var folder = DriveApp.getFolderById('16ehxTEzP7QaUA99KiewpRXioU8L_mHzA').getFolders();
 
-  // get current sheet name
-  var currentDoc = SpreadsheetApp.getActiveSpreadsheet().getName();
+  // get the active report card
+  var reportCard = SpreadsheetApp.getActiveSpreadsheet();
+  var id = reportCard.getId();
 
   // get the name of the folders
   var emails = ([]);
@@ -26,7 +27,7 @@ function fetch() {
     var file = database.next();
     //Logger.log(file.getName());
     //Logger.log(sheetName);
-    if (file.getName() == sheetName)
+    if (file.getName() == currentDoc)
     {
       var dataEntry = SpreadsheetApp.openById(file.getId()).getSheets();
       for (var s in dataEntry)
