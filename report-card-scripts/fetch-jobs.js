@@ -19,7 +19,7 @@ function fetch() {
   // get ranges 1, 3, 4
   var index = 1;
   var i = sheets.length - 1;
-  while(i != 0)
+  while(!(i < 0))
   {
     if (sheets[i].getName() == 'properties')
     {
