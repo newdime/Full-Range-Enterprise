@@ -1,47 +1,38 @@
 function fetch() {
 
-  // get the folder of staff folders
-  var folder = DriveApp.getFolderById('16ehxTEzP7QaUA99KiewpRXioU8L_mHzA').getFolders();
-
   // get the active report card
   var reportCard = SpreadsheetApp.getActiveSpreadsheet();
   var id = reportCard.getId();
+  var sheets = reportCard.getSheets();
+  var name = reportCard.getName();
+  var namedRange = reportCard.getRangeByName('import');
 
-  // get the name of the folders
-  var emails = ([]);
-  var i = 0;
 
-  while (folder.hasNext()) {
-    var folderName = folder.next();
-    emails[i] = folderName.getName();
-    i++
-  }
+  // match the database
+  var matched = [];
+  matched = match(0, id, name);
+  Logger.log(matched);
 
-  // get the data base file
-  var databaseFolder = '1SVYaRTIsECLnpppT4QLAb2026wduL62C';
-  var database = DriveApp.getFolderById(databaseFolder).getFiles();
+  // open the database entry
+  var database = SpreadsheetApp.openById(matched[0]).getSheets();
 
-  // go through files in database
-  while(database.hasNext())
+  // get ranges 1, 3, 4
+  var index = 1;
+  var i = sheets.length - 1;
+  while(i != 0)
   {
-    var file = database.next();
-    //Logger.log(file.getName());
-    //Logger.log(sheetName);
-    if (file.getName() == currentDoc)
+    if (sheets[i].getName() == 'properties')
     {
-      var dataEntry = SpreadsheetApp.openById(file.getId()).getSheets();
-      for (var s in dataEntry)
-      {
-        if(dataEntry[s].getName() == domain)
-        {
-          var index = s;
-          Logger.log('s = ' + index);
-          break;
-        }
-      }
-      Logger.log(file.getName());
-      break;
+     i--
     }
-  }
 
+    // set the schedule data into the reports
+    var job = database[matched[1]].getRange(index , 1, namedRange.getNumRows(),  1).getValues();
+    var descSite = database[matched[1]].getRange(index , 3, namedRange.getNumRows(),  2).getValues();
+    sheets[i].getRange(2 , 2, namedRange.getNumRows(),  1).setValues(job);
+    sheets[i].getRange(2 , 3, namedRange.getNumRows(),  2).setValues(descSite);
+
+    index = index + 7;
+    i--
+  }
 }

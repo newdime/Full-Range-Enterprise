@@ -15,6 +15,8 @@ function snapShot()
     i++
   }
 
+  Logger.log("found parent");
+
   // get the folder of staff folders
   var folder = DriveApp.getFolderById('16ehxTEzP7QaUA99KiewpRXioU8L_mHzA').getFolders();
 
@@ -32,6 +34,8 @@ function snapShot()
   }
   Logger.log(folderName.getName());
 
+  Logger.log("got email list");
+  
   // copy data to database
   if (match == 1)
   {
