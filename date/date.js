@@ -1,5 +1,6 @@
 function date(token, returnData) {
 
+  Logger.log('entering date');
   var token = token;
   var returnData = returnData;
   var week = 7;
@@ -7,26 +8,29 @@ function date(token, returnData) {
   // get current date and day of the week
   var date = new Date();
   var day = date.getDay();
-  Logger.log(date);
-  Logger.log(day);
+  Logger.log('date = ' + date);
+  Logger.log('day = ' + day);
 
   // change the date to monday
+  var difference = 0;
   if(day != 1)
   {
-    var difference = day - 1;
-    Logger.log(difference);
+    difference = day - 1;
+    Logger.log('difference = ' + difference);
   }
 
   // set date to forward week if necessary
   if(token == 1)
   {
     date.setDate(date.getDate()+week);
+    Logger.log('forward week');
   }
 
   // set date to previous week * 2
   if(token == 2)
   {
     date.setDate(date.getDate()-(week*2));
+    Logger.log('previous week');
   }
 
   // get all the dates and put them in two arrays (for schedule)
@@ -35,8 +39,10 @@ function date(token, returnData) {
     var schedArr = [];
     var endArr = [];
     var combine = [];
+    Logger.log('formated ' + Utilities.formatDate(date, "GMT+11", "dd/MM/yy"));
     date.setDate(date.getDate() - difference);
     schedArr[0] = Utilities.formatDate(date, "GMT+11", "dd/MM/yy");
+    Logger.log('start arr = ' + schedArr[0]);
 
     var firstEnd = new Date();
     firstEnd.setDate(firstEnd.getDate() + (week - difference - 1));
