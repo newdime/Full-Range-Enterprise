@@ -7,6 +7,11 @@
       "version": "v2"
     }],
     "libraries": [{
+      "userSymbol": "match",
+      "libraryId": "1WJyNd9qdJmoj602KCYurq1nOkzRF258CN-t3v18nibwjC4YI7fHej9S5",
+      "version": "12",
+      "developmentMode": true
+    }, {
       "userSymbol": "Resolver",
       "libraryId": "1ptfMcTjU_ydi9Nbuw3r0bXs1f4Fdohjyvo38yq8Jyv3b8SU4PMk5hH_9",
       "version": "1",
