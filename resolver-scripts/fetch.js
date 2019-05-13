@@ -43,9 +43,28 @@ function fetch(staff){
   }
 
   // capture report data into array
-
-  // capture schedule data into array
-
+  var index = 1;
+  while(index <= 7*7)
+  {
+    if (!(index > 7))
+    {
+    }
+    var data1 = reportSheet[i].getRange(index, 1, 7, 12).getValues();
+    
+    //Logger.log(data1);
+    //Logger.log(data2);
+    
+    
+    index = index + 7;
+  }
+    Logger.log(data1[0]);
+    //data1[0].splice(8,3);
+  data1[0].splice(1,0, data1[0][7], data1[0][6], data1[0][5], data1[0][3], data1[0][4], data1[0][1], data1[0][2], data1[0][11]);
+  data1[0].splice(8,data1[0].length - 8 - 1);
+    Logger.log(data1[0]);
+  
+  // capture schedule data into arraygetActiveSheet()  // capture schedule data into array
+ 
   // paste report data into resolver sheet
 
   // paste schedule data into resolver sheet
