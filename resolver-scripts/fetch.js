@@ -1,10 +1,12 @@
 function fetch(staff){
   
+  Logger.log("---------------- FETCH -----------------");
   var staff = staff;
   
   // get the active resolver
   var resolver = SpreadsheetApp.getActiveSpreadsheet();
   var id = resolver.getId();
+  var sheetIDX = resolver.getSheetId();
   var sheets = resolver.getSheets();
   //  var name = resolver.getName();
   var name = resolver.getActiveSheet().getName();
@@ -64,7 +66,6 @@ function fetch(staff){
   }
   
   // paste report data into sheet
-  //Logger.log(resolver.getRangeByName(staff).getValues());
   var staffRange = resolver.getRangeByName(staff);
   var index = staffRange.getRowIndex();
   var col = staffRange.getColumn();
@@ -72,19 +73,34 @@ function fetch(staff){
   
   var l = data1.length;
   var colInc = 0;
-  var past = ([]);
+  var paste = ([]);
+  
   while (!(l < 0))
   {
-    //Logger.log(data1.splice(l - 7, 0));
-    Logger.log(data1.splice(l, 0));
-    resolver.getRange(index, col + colInc, staffRange.getNumRows(), divider).setValues(paste); 
-    colInc = colInc + divider;
+    l = l - 7;
+    Logger.log('loop test');
+    //Logger.log(data1.slice(l, l+7));
+    Logger.log('index ' + index);
+    Logger.log('staffRange ' + staffRange.getNumRows());
+    Logger.log('divider ' + divider);
+    Logger.log('column: ' + col);
     
-    l = l - 7; 
+    paste = data1.slice(l, l+7);
+    
+    Logger.log(paste);
+    
+    sheets[sheetIDX].getRange(index, col, staffRange.getNumRows(), divider).setValues(paste); 
+   
+     
+    col+= divider;
+    //colInc += divider;
+    
   }
   
   Logger.log(staffRange.getNumRows());
   Logger.log(staffRange.getNumColumns());
   Logger.log(staffRange);
   
+  Logger.log("---------------- EXIT FETCH -----------------");
+  return 0;
 }
