@@ -35,7 +35,7 @@ function snapShot()
   Logger.log(folderName.getName());
 
   Logger.log("got email list");
-  
+
   // copy data to database
   if (match == 1)
   {
@@ -69,8 +69,8 @@ function snapShot()
     var sheets = reportCard.getSheets();
     var rows = 0;
 
-    // var n = 0
-    for(var n in sheets)
+    var n = 0
+    while(n < sheets.length - 1)
     {
       if (sheets[n].getName() == 'properties')
       {
