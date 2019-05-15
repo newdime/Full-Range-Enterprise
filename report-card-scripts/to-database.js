@@ -2,6 +2,7 @@ function snapShot()
 {
   // get the active report card
   var reportCard = SpreadsheetApp.getActiveSpreadsheet();
+  var namedRange = reportCard.getRangeByName('Data').getA1Notation();
   var id = reportCard.getId();
 
   // get the name of the parent staff folder
@@ -72,17 +73,29 @@ function snapShot()
     var n = 0
     while(n < sheets.length - 1)
     {
+      Logger.log('n = ' + n);
+      
       if (sheets[n].getName() == 'properties')
       {
         break;
       }
+      
+      // var data = sheets[n].getRange(2, 2, 7, sheets[n].getLastColumn() - 1);
+      var data = sheets[n].getRange(namedRange);
+      
       if (n != 0)
       {
         dataSheets[t].insertRowsBefore(1, data.getNumRows());
       }
-      var data = sheets[n].getRange(2, 2, sheets[n].getLastRow() - 1, sheets[n].getLastColumn() - 1);
+      
+      Logger.log(data.getValues());
+      
       dataSheets[t].getRange(1,1,data.getNumRows(),data.getNumColumns()).setValues(data.getValues());
+      dataSheets[t].getRange(1,1,data.getNumRows(),data.getNumColumns()).setBackground('#bababa');
+      dataSheets[t].getRange(1,1,data.getNumRows(),data.getNumColumns()).setBorder(true, false, true, false, false, false);
       Logger.log(data.getNumRows());
+      
+      n++
     }
   }
 

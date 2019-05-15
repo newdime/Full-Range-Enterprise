@@ -16,8 +16,8 @@ function fetch(staff){
   
   // get the correct database entries
   var report = SpreadsheetApp.openById(match(2, 0, name));
-  var schedule =  SpreadsheetApp.openById(match(0, 0, name));
   Logger.log('report = ' + report.getName());
+  var schedule =  SpreadsheetApp.openById(match(0, 0, name));
   Logger.log('schedule = ' + schedule.getName());
   
   // get the correct report sheet
@@ -75,7 +75,7 @@ function fetch(staff){
   var colInc = 0;
   var paste = ([]);
   
-  while (!(l < 0))
+  while (!(l < 1))
   {
     l = l - 7;
     Logger.log('loop test');
