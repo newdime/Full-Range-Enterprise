@@ -18,14 +18,14 @@ function fetch() {
 
   // get ranges 1, 3, 4
   var index = 1;
-  var i = sheets.length - 1;
+  var i = sheets.length - 2;
   while(!(i < 0))
   {
     if (sheets[i].getName() == 'properties')
     {
      i--
     }
-
+    Logger.log('sheet ' + sheets[i].getName());
     // set the schedule data into the reports
     var job = database[matched[1]].getRange(index , 1, namedRange.getNumRows(),  1).getValues();
     var descSite = database[matched[1]].getRange(index , 3, namedRange.getNumRows(),  2).getValues();
