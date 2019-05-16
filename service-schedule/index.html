@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+<div style = "margin-bottom: 10px;">
+<div class = "snap">
+   New Entry 
+</div> 
+ <div class = "b1">
+<input type="button" value="Create" onclick="google.script.run.prompt()" />
+</div>
+</div>
+ 
+<div style = "margin-bottom: 10px;">
+<div class = "week">
+   Submit Entry?
+</div>
+ <div class = "b2">
+<input type="button" value="submit" onclick="sendPush()" />
+</div> 
+ </div> 
+</body>
+  
+<style>
+  div.b1 { display: inline-block; float: right; }
+  div.b2 { display: inline-block; float: right; }
+  div.snap { display: inline-block; }
+  div.week { display: inline-block; }
+</style>
+</html>
+
+

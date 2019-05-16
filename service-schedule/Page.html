@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+    
+    
+   <div style = "margin-bottom: 10px;">
+<div class = "snap">
+  SITE
+</div> 
+ <div class = "b1">
+<input class = "in" type="text" id = 'SITE' placeholder="enter your text here"  size = "50" />
+</div>
+</div>
+
+<div style = "margin-bottom: 10px;">
+<div class = "snap">
+  ADDRESS
+</div> 
+ <div class = "b2">
+<input class = "in" type="text" id = 'ADDRESS' placeholder="enter your text here" size = "50" />
+</div>
+</div>
+
+<div style = "margin-bottom: 10px;">
+<div class = "snap">
+  MONTHLY (enter 0 if none)
+</div> 
+ <div class = "b2">
+<input class = "in" type="text" id = 'MONTHLY' placeholder="enter your text here" size = "50" />
+</div>
+</div>
+
+<div style = "margin-bottom: 10px;">
+<div class = "snap">
+  SIX MONTHLY (enter 0 if none)
+</div> 
+ <div class = "b2">
+<input class = "in" type="text" id = 'SIXMONTHLY' placeholder="enter your text here"  size = "50" />
+</div>
+</div>
+
+<div style = "margin-bottom: 10px;">
+<div class = "snap">
+  ANNUAL (enter 0 if none)
+</div> 
+ <div class = "b2">
+<input class = "in" type="text" id = 'ANNUAL' placeholder="enter your text here"  size = "50" />
+</div>
+</div>
+
+<div style = "margin-bottom: 10px;">
+<div class = "snap">
+  OTHER (enter 0 if none)
+</div> 
+ <div class = "b2">
+<input class = "in" type="text" id = 'OTHER' placeholder="enter your text here" size = "50" />
+</div>
+</div>
+
+ <div class = "b1">
+<input type="button" value="Submit" onclick="collect()"  size = "50" />
+</div>
+ 
+  </body>
+  
+  <script>
+  function collect()
+  {
+  // get all the elements
+  var x = document.getElementsByClassName('in');
+  var data = ([]);
+  
+  //get all the elements and send them to the database
+  var i = 0;
+  while (i < x.length) 
+  {
+  data[i] = x[i].value;
+  console.log(data[i]);
+  i++
+  }
+  google.script.run.dataEntry(data);
+  }
+  </script>
+  
+  <style>
+  div.b1 { display: inline-block; float: right; }
+  div.b2 { display: inline-block; float: right; }
+  div.snap { display: inline-block; float: center;}
+  div.week { display: inline-block; }
+</style>
+</html>
+
+
