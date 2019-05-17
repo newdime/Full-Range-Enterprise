@@ -1,4 +1,4 @@
-function makeEvents(site, directions, type){
+function makeEvents(details){
   // function makeEvents(token, details, serviceType){
   // token = 0 MONTHLY
   // token = 1 6MONTHLY

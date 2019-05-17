@@ -26,4 +26,16 @@ function dataEntry(data) {
   var range = ss.getActiveSheet().getRange(2, 1, 1, 6);
   range.setValues(dataIn);
   
+  // prepare data for scheduling
+  var details = ss.getActiveSheet().getRange(2, 1, 1, 11).getValues();
+  
+  // set due dates
+  
+  
+  // schedule 
+  makeEvents(details);
+  
+}
+
+function dueDates(){
 }
