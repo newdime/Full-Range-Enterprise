@@ -44,9 +44,3 @@ function showDialog() {
   SpreadsheetApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
       .showModalDialog(html, 'NEW DATABASE ENTRY');
 }
-
-function log(x)
-{
-  var x = x;
-  Logger.log(x);
-}

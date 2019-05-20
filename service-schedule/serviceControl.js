@@ -18,9 +18,11 @@ function dataEntry(data) {
   // insert a row if need 
   if (site[1][0] !== null)
   {
-    Logger.log(site[0]);
+    Logger.log(site[1]);
     ss.insertRowBefore(2);
   }
+  
+  Logger.log(data);
   
   // set the values 
   var range = ss.getActiveSheet().getRange(2, 1, 1, 6);
@@ -33,7 +35,7 @@ function dataEntry(data) {
   
   
   // schedule 
-  makeEvents(details);
+  //makeEvents(details);
   
 }
 
