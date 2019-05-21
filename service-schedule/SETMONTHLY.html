@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+<div style = "margin-bottom: 10px;">
+<div class = "snap">
+   Set Date
+</div> 
+ <div class = "b1">
+<input class= "in" type="text" placeholder="January 1, 2019" size = "50"/>
+</div>
+</div>
+ 
+<div style = "margin-bottom: 10px;">
+<div class = "week">
+   Submit Entry?
+</div>
+ <div class = "b2">
+<input type="button" value="submit" onclick="collect()" />
+</div> 
+ </div> 
+</body>
+  
+<style>
+  div.b1 { display: inline-block; float: right; }
+  div.b2 { display: inline-block; float: right; }
+  div.snap { display: inline-block; }
+  div.week { display: inline-block; }
+</style>
+
+
+<script>
+function collect() {
+
+// get all the elements
+var x = document.getElementsByClassName('in');
+var data = ([]);
+
+//get all the elements and send them to the database
+  var i = 0;
+  while (i < x.length) 
+  {
+  data[i] = x[i].value;
+  //Logger.log(data[i]);
+  console.log(data[i]);
+  i++
+  }
+  var token = -1;
+  google.script.run.makeEvents(token,data);
+
+}
+</script>
+</html>
+
+

@@ -60,7 +60,10 @@ function fetch(staff){
   {
     //data1[0].splice(8,3);
     data1[t].splice(1,0, data1[t][7], data1[t][6], data1[t][5], data1[t][3], data1[t][4], data1[t][1], data1[t][2], data1[t][11]);
-    data1[t].splice(8,data1[t].length - 8 - 1, data2[t][0]);
+    Logger.log(data1[t]);
+    data1[t].splice(9,data1[t].length - 8 - 1, data2[t][0]);
+    Logger.log(data1[t]);
+    //data1[t].splice(9,0, data2[t][0]);
     //  Logger.log(data1[t]);
     t++
   }
