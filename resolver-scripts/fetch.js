@@ -6,7 +6,9 @@ function fetch(staff){
   // get the active resolver
   var resolver = SpreadsheetApp.getActiveSpreadsheet();
   var id = resolver.getId();
-  var sheetIDX = resolver.getSheetId();
+  Logger.log('resolve id ' + id);
+  var sheetIDX = resolver.getActiveSheet();
+  Logger.log('sheet id ' + sheetIDX);
   var sheets = resolver.getSheets();
   //  var name = resolver.getName();
   var name = resolver.getActiveSheet().getName();
@@ -60,9 +62,9 @@ function fetch(staff){
   {
     //data1[0].splice(8,3);
     data1[t].splice(1,0, data1[t][7], data1[t][6], data1[t][5], data1[t][3], data1[t][4], data1[t][1], data1[t][2], data1[t][11]);
-    Logger.log(data1[t]);
+  //  Logger.log(data1[t]);
     data1[t].splice(9,data1[t].length - 8 - 1, data2[t][0]);
-    Logger.log(data1[t]);
+  //  Logger.log(data1[t]);
     //data1[t].splice(9,0, data2[t][0]);
     //  Logger.log(data1[t]);
     t++
@@ -90,9 +92,11 @@ function fetch(staff){
     
     paste = data1.slice(l, l+7);
     
-    Logger.log(paste);
+   Logger.log(paste);
+    Logger.log("sheet ");
+    Logger.log(sheetIDX.getName());
     
-    sheets[sheetIDX].getRange(index, col, staffRange.getNumRows(), divider).setValues(paste); 
+    sheetIDX.getRange(index, col, staffRange.getNumRows(), divider).setValues(paste); 
    
      
     col+= divider;
