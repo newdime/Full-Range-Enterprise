@@ -13,9 +13,9 @@ function weekly (){
   // reports
   data_base_scripts().reportDatabaseEntry();
   // schedule
-  data_base_scripts().scheduleDatabaseEntry();
+  //data_base_scripts().scheduleDatabaseEntry();
   // resolver
-  data_base_scripts().resolveDatabaseEntry(); 
+  //data_base_scripts().resolveDatabaseEntry(); 
   
   /* archive current data, wipe reports, schedules and resolver.
   rename for this week/month */
