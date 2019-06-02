@@ -1,0 +1,27 @@
+{
+  "timeZone": "America/New_York",
+  "dependencies": {
+    "libraries": [{
+      "userSymbol": "staff_reports",
+      "libraryId": "1LYuuMruQG_NPfR0zpe1c4huQHko0EzmpB3_-Fv3laqgYLIiH44qMIZnO",
+      "version": "1",
+      "developmentMode": true
+    }, {
+      "userSymbol": "schedule_scripts",
+      "libraryId": "18l81YYlf2C_v0_kyduDTw_P_kDs1nu-7DRAJPpwlT2rfUhenXNq7Ns3y",
+      "version": "1",
+      "developmentMode": true
+    }, {
+      "userSymbol": "resolve_scripts",
+      "libraryId": "1ptfMcTjU_ydi9Nbuw3r0bXs1f4Fdohjyvo38yq8Jyv3b8SU4PMk5hH_9",
+      "version": "1",
+      "developmentMode": true
+    }, {
+      "userSymbol": "data_base_scripts",
+      "libraryId": "1-UXlrH9B7aqtTCIsvdpPal68S6OoeB5OcvCra_AexLGZ4pxWi1FzNKmu",
+      "version": "1",
+      "developmentMode": true
+    }]
+  },
+  "exceptionLogging": "STACKDRIVER"
+}
