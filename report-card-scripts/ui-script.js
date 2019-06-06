@@ -5,8 +5,8 @@ function onOpen() {
   .addToUi();
 
   //runFile();
-  createHeaders();
-  trig();
+ // createHeaders();
+  //trig();
 }
 
 function showSidebar() {
