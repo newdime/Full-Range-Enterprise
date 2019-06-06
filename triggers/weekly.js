@@ -2,6 +2,7 @@ function trigger (){
 ScriptApp.newTrigger('weekly')
 .timeBased()
 .onWeekDay(ScriptApp.WeekDay.MONDAY)
+.atHour(0)
 .create();
 }
 
@@ -11,7 +12,7 @@ function weekly (){
       -  schedule
       -  resolver                   */
   // reports
-  data_base_scripts().reportDatabaseEntry();
+  //data_base_scripts().reportDatabaseEntry();
   // schedule
   //data_base_scripts().scheduleDatabaseEntry();
   // resolver
@@ -20,7 +21,7 @@ function weekly (){
   /* archive current data, wipe reports, schedules and resolver.
   rename for this week/month */
   // reports
-  staff_reports().runFilePlus();
+  staff_reports.runFilePlus();
   // schedule
   //schedule_scripts().runFile();
   // resolver
