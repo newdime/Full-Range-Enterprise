@@ -2,9 +2,14 @@
   "timeZone": "America/New_York",
   "dependencies": {
     "libraries": [{
-      "userSymbol": "staff_reports",
-      "libraryId": "1LYuuMruQG_NPfR0zpe1c4huQHko0EzmpB3_-Fv3laqgYLIiH44qMIZnO",
+      "userSymbol": "data_base_scripts",
+      "libraryId": "1-UXlrH9B7aqtTCIsvdpPal68S6OoeB5OcvCra_AexLGZ4pxWi1FzNKmu",
       "version": "1",
+      "developmentMode": true
+    }, {
+      "userSymbol": "date",
+      "libraryId": "1grJIEsyiVDlePELYu9dBeS17O03c4aA_MIOuzuVxMEEOmjSx1_n1AIpf",
+      "version": "33",
       "developmentMode": true
     }, {
       "userSymbol": "schedule_scripts",
@@ -17,8 +22,8 @@
       "version": "1",
       "developmentMode": true
     }, {
-      "userSymbol": "data_base_scripts",
-      "libraryId": "1-UXlrH9B7aqtTCIsvdpPal68S6OoeB5OcvCra_AexLGZ4pxWi1FzNKmu",
+      "userSymbol": "staff_reports",
+      "libraryId": "1LYuuMruQG_NPfR0zpe1c4huQHko0EzmpB3_-Fv3laqgYLIiH44qMIZnO",
       "version": "1",
       "developmentMode": true
     }]
