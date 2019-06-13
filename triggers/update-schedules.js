@@ -1,4 +1,27 @@
-function scheduleUpdate() {
+function schedule() {
+  
+  // schedule folder
+  var sourcFolder = "1v7Vu-ATohdt_9QR0gRN1Abx7ovyGEaHv";
+  // archive folder
+  var archiveFolder = "1s1WIPMDyrNqFjx6-iQcPX0dJDIPIvPQH";
+  // send to be updated
+  updateSchedules(sourcFolder, archiveFolder);
+  
+}
+
+function resolve() {
+  
+  // schedule folder
+  var sourcFolder = "109Sgt4zyE5aSYVuh-2sIcp12NHyM4dka";
+  // archive folder
+  var archiveFolder = "1s1WIPMDyrNqFjx6-iQcPX0dJDIPIvPQH";
+  // send to be updated
+  updateSchedules(sourcFolder, archiveFolder);
+  
+}
+
+
+function updateSchedules(sourcFolder, archiveFolder) {
   
   // get the current and next monthly date range
   var dates = date.date(3);
@@ -16,15 +39,14 @@ function scheduleUpdate() {
   // slice up the future document name
   var docName = sliced[0].slice(0, sliced[0].length/2) + sliced[sliced.length-1].slice(sliced[sliced.length-1].length/2);
   Logger.log('Future shcedule name: ' + docName);
-  /*
   
   var Plus = 1;
   
   // Set destination folder
-  var scheduleFolder = "1v7Vu-ATohdt_9QR0gRN1Abx7ovyGEaHv";
-  var folder = DriveApp.getFolderById(scheduleFolder);
+  var sourcFolder = sourcFolder;
+  var folder = DriveApp.getFolderById(sourcFolder);
   
-  var archiveFolder = "1s1WIPMDyrNqFjx6-iQcPX0dJDIPIvPQH";
+  var archiveFolder = archiveFolder;
   var dest = DriveApp.getFolderById(archiveFolder);
   
   // iterate through schedules
